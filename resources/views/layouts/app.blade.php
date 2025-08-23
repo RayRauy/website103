@@ -321,10 +321,10 @@
                             <div class="collapse " id="sidebarUsermanagement">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">Roles</a>
+                                        <a class="nav-link" href="{{ route('role.index') }}">Roles</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="ecommerce-index.html">Users</a>
+                                        <a class="nav-link" href="">Users</a>
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end startbarDashboards-->
