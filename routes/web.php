@@ -1,14 +1,17 @@
 <?php
 
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', action: function () {
     return view('index');
 }) -> name('index');
-
 Auth::routes();
+
+Route::get('login', [HomeController::class, 'login']) -> name('login');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('role-index', [RoleController::class, 'index']) -> name('role.index');
