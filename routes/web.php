@@ -4,7 +4,7 @@ use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
+Route::get('/', action: function () {
     return view('index');
 }) -> name('index');
 
