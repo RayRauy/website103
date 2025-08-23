@@ -19,10 +19,7 @@ Route::get('create-news', function(){
     return view('create_news', []);
 }) -> name('create_news');
 
-Route::get('test', function(){
-    $formattedTime = date('Y-m-d', time());
-    return view('test', ['time' => $formattedTime]);
-}) -> name('test');
+Route::resource('roles', 'RoleController');
 
 Auth::routes();
 

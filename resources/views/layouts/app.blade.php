@@ -313,18 +313,18 @@
                             <span>Main Menu</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarDashboards">
+                            <a class="nav-link" href="#sidebarUsermanagement" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarUsermanagement">
                                 <i class="iconoir-home-simple menu-icon"></i>
-                                <span>Dashboards</span>
+                                <span>User Management</span>
                             </a>
-                            <div class="collapse " id="sidebarDashboards">
+                            <div class="collapse " id="sidebarUsermanagement">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">Analytics</a>
+                                        <a class="nav-link" href="index.html">Roles</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="ecommerce-index.html">Ecommerce</a>
+                                        <a class="nav-link" href="ecommerce-index.html">Users</a>
                                     </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end startbarDashboards-->

@@ -218,13 +218,6 @@
                                                 <td>361<small class="text-muted">(61%)</small></td>
                                             </tr>
                                             <!--end tr-->
-                                            <tr>
-                                                <td><img src="backend/assets/images/logos/chrome.png" alt height="24" class="me-2">Chrome</td>
-                                                <td>10853<small class="text-muted">(52%)</small></td>
-                                                <td> 52.80%</td>
-                                                <td>566<small class="text-muted">(92%)</small></td>
-                                            </tr>
-                                            <!--end tr-->
                                         </tbody>
                                     </table>
                                     <!--end table-->
