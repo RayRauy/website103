@@ -6,6 +6,10 @@
     <title>News Portal - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+
+
+
+    
     <style>
         /* Custom styles for this page */
         .hero-slide {
