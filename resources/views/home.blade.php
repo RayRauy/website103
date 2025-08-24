@@ -11,6 +11,9 @@
                                         <p class="text-dark mb-0 fw-semibold fs-14">Active</p>
                                         <h3 class="mt-2 mb-0 fw-bold">24k</h3>
                                     </div>
+
+
+                                    
                                     <!--end col-->
                                     <div class="col-3 align-self-center">
                                         <div class="d-flex justify-content-center align-items-center thumb-xl bg-light rounded-circle mx-auto">
