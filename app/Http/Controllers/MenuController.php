@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Menu;
 
 class MenuController extends Controller
 {
@@ -11,7 +12,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $rows = Menu::whereNull('deleted_at') -> get();
+        return view('menus.index', compact('rows'));
     }
 
     /**
@@ -19,7 +21,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('menus.create');
     }
 
     /**
@@ -27,7 +29,21 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request -> validate([
+            'title' => 'required|unique:menus|max:50',
+            'sub_title' => 'max:200',
+            'description' => 'max:200',
+            'active' => 'max:1'
+        ]);
+
+        Menu::create([
+            'title' => $request -> title,
+            'sub_title' => $request -> sub_title,
+            'description' => $request -> description,
+            'active' => $request -> active
+        ]);
+
+        return redirect()->route('menu.index'); // Redirect to roles index after storing
     }
 
     /**
@@ -43,7 +59,8 @@ class MenuController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $row = Menu::findOrFail($id);
+        return view('menus.edit', compact('row'));
     }
 
     /**
@@ -51,7 +68,22 @@ class MenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $row = Menu::findOrFail($id);
+        $validated = $request -> validate([
+            'title' => 'required|unique:menus,title,'.$id.'|max:50',
+            'sub_title' => 'max:200',
+            'description' => 'max:200',
+            'active' => 'max:1'
+        ]);
+
+        $row -> update([
+            'title' => $request -> title,
+            'sub_title' => $request -> sub_title,
+            'description' => $request -> description,
+            'active' => $request -> active
+        ]);
+
+        return redirect()->route('menu.index'); // Redirect to roles index after storing
     }
 
     /**
@@ -59,6 +91,8 @@ class MenuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $row = Menu::findOrFail($id);
+        $row -> delete();
+        return redirect() -> route('menu.index');
     }
 }
