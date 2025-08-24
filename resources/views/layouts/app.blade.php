@@ -11,6 +11,8 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
             <meta content="" name="author" />
+            <meta name="theme-set-url" content="{{ route('theme-set') }}">
+            <meta name="csrf-token" content="{{ csrf_token() }}">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
             <!-- App favicon -->
@@ -27,7 +29,7 @@
 
 </head>
 
-<body>
+<body data-theme="{{ session('theme', 'light') }}">
 
     <!-- Top Bar Start -->
     <div class="topbar d-print-none">
