@@ -79,20 +79,27 @@
                             <table class="table mb-0 checkbox-all" id="datatable_1">
                                 <thead class="table-light">
                                   <tr>
+                                    <th>No</th>
                                     <th class="ps-2">Name</th>
                                     <th>Description</th>
                                     <th class="text-end">Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Admin</td>
-                                        <td>Admin Description</td>
-                                        <td class="text-end">                                                       
-                                            <a href="#"><i class="las la-pen text-secondary fs-18"></i></a>
-                                            <a href="#"><i class="las la-trash-alt text-secondary fs-18"></i></a>
-                                        </td>
-                                    </tr>
+                                    @if ($rows)
+                                    @php($i = 1)
+                                        @foreach ( $rows as $row )
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $row['name'] }}</td>
+                                                <td>{{ $row['description'] }}</td>
+                                                <td class="text-end">                                                       
+                                                    <a href="{{ route('role.edit', $row -> id) }}"><i class="las la-pen text-secondary fs-18"></i></a>
+                                                    <a href="{{ route('role.delete', $row -> id) }}"><i class="las la-trash-alt text-secondary fs-18"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

@@ -14,11 +14,11 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
             <!-- App favicon -->
-            <link rel="shortcut icon" href="assets/images/favicon.ico">
+            <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
 
        
 
-    <link rel="stylesheet" href="assets/libs/jsvectormap/css/jsvectormap.min.css">
+    <link rel="stylesheet" href="{{ asset('backend/assets/libs/jsvectormap/css/jsvectormap.min.css') }}">
 
      <!-- App css -->
      <link href="{{  asset('backend/assets/css/bootstrap.min.css')  }}" rel="stylesheet" type="text/css" />
@@ -275,7 +275,11 @@
                             <a class="dropdown-item" href="pages-profile.html"><i class="las la-lock fs-18 me-1 align-text-bottom"></i> Security</a>
                             <a class="dropdown-item" href="pages-faq.html"><i class="las la-question-circle fs-18 me-1 align-text-bottom"></i> Help Center</a>                       
                             <div class="dropdown-divider mb-0"></div>
-                            <a class="dropdown-item text-danger" href="backend/auth-login.html"><i class="las la-power-off fs-18 me-1 align-text-bottom"></i> Logout</a>
+                            <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="las la-power-off fs-18 me-1 align-text-bottom"></i> Logout
+                            </a>
+                            <form action="{{ route('logout') }}" method="POST" id="logout-form" style="display: none;">@csrf</form>
                         </div>
                     </li>
                 </ul><!--end topbar-nav-->

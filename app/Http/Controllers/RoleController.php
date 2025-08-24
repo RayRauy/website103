@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class RoleController extends Controller
 {
@@ -11,7 +12,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('roles.index'); // Assuming you have a view for listing roles
+        $rows = Role::whereNull('deleted_at') -> get();
+        return view('roles.index', compact('rows')); // Assuming you have a view for listing roles
     }
 
     /**
@@ -19,7 +21,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create'); // Assuming you have a view for listing roles
     }
 
     /**
@@ -27,7 +29,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request -> validate([
+            'name' => 'required|unique:roles|max:50',
+            'description' => 'max:200'
+        ]);
+
+        Role::create([
+            'name' => $request -> name,
+            'description' => $request -> description
+        ]);
+
+        return redirect()->route('role.index'); // Redirect to roles index after storing
     }
 
     /**
@@ -43,7 +55,8 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $row = Role::findOrFail($id);
+        return view('roles.edit', compact('row'));
     }
 
     /**
@@ -51,7 +64,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $row = Role::findOrFail($id);
+        $validated = $request -> validate([
+            'name'=>'required|unique:roles,name,'.$id.'|max:50',
+            'description' => 'max:200'
+        ]);
+
+        $row->update([
+            'name'=> $request->name,
+            'description'=>$request->description
+
+        ]);
+
+        return redirect()->route('role.index');
     }
 
     /**
@@ -59,6 +84,8 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $row = Role::findOrFail($id);
+        $row -> delete();
+        return redirect() -> route('role.index');
     }
 }
