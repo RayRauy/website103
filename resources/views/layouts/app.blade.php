@@ -44,7 +44,12 @@
                         </button>
                     </li> 
                     <li class="mx-3 welcome-text">
-                        <h3 class="mb-0 fw-bold text-truncate">Good Morning, {{ Auth::user() -> name }}!</h3>
+                        <h3 class="mb-0 fw-bold text-truncate">Good Morning, 
+                        @if (Auth::check())
+                            {{ Auth::user() -> name }}!</h3>
+                        @else
+                            Guest                            
+                        @endif
                         <!-- <h6 class="mb-0 fw-normal text-muted text-truncate fs-14">Here's your overview this week.</h6> -->
                     </li>                   
                 </ul>
@@ -58,13 +63,13 @@
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
                         aria-haspopup="false" aria-expanded="false">
-                        <img src="backend/assets/images/flags/us_flag.jpg" alt="" class="thumb-sm rounded-circle">
+                        <img src="{{  asset('backend/assets/images/flags/us_flag.jpg')  }}" alt="" class="thumb-sm rounded-circle">
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"><img src="backend/assets/images/flags/us_flag.jpg" alt="" height="15" class="me-2">English</a>
-                            <a class="dropdown-item" href="#"><img src="backend/assets/images/flags/spain_flag.jpg" alt="" height="15" class="me-2">Spanish</a>
-                            <a class="dropdown-item" href="#"><img src="backend/assets/images/flags/germany_flag.jpg" alt="" height="15" class="me-2">German</a>
-                            <a class="dropdown-item" href="#"><img src="backend/assets/images/flags/french_flag.jpg" alt="" height="15" class="me-2">French</a>
+                            <a class="dropdown-item" href="#"><img src="{{  asset('backend/assets/images/flags/us_flag.jpg')  }}" alt="" height="15" class="me-2">English</a>
+                            <a class="dropdown-item" href="#"><img src="{{  asset('backend/assets/images/flags/spain_flag.jpg')  }}" alt="" height="15" class="me-2">Spanish</a>
+                            <a class="dropdown-item" href="#"><img src="{{  asset('backend/assets/images/flags/germany_flag.jpg')  }}" alt="" height="15" class="me-2">German</a>
+                            <a class="dropdown-item" href="#"><img src="{{  asset('backend/assets/images/flags/french_flag.jpg')  }}" alt="" height="15" class="me-2">French</a>
                         </div>
                     </li><!--end topbar-language-->
         
@@ -256,15 +261,15 @@
                     <li class="dropdown topbar-item">
                         <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
-                            <img src="backend/assets/images/users/avatar-1.jpg" alt="" class="thumb-lg rounded-circle">
+                            <img src="{{ asset('backend/assets/images/users/avatar-1.jpg') }}" alt="" class="thumb-lg rounded-circle">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end py-0">
                             <div class="d-flex align-items-center dropdown-item py-2 bg-secondary-subtle">
                                 <div class="flex-shrink-0">
-                                    <img src="backend/assets/images/users/avatar-1.jpg" alt="" class="thumb-md rounded-circle">
+                                    <img src="{{ asset('backend/assets/images/users/avatar-1.jpg') }}" alt="" class="thumb-md rounded-circle">
                                 </div>
                                 <div class="flex-grow-1 ms-2 text-truncate align-self-center">
-                                    <h6 class="my-0 fw-medium text-dark fs-13">{{ Auth::user()->name }}</h6>
+                                    <h6 class="my-0 fw-medium text-dark fs-13">{{ Auth::check() ? Auth::user()->name : '' }}</h6>
                                     <small class="text-muted mb-0">Front End Developer</small>
                                 </div><!--end media-body-->
                             </div>
@@ -296,11 +301,11 @@
         <div class="brand">
             <a href="{{ route('home') }}" class="logo">
                 <span>
-                    <img src="backend/assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
+                    <img src="{{  asset('backend/assets/images/logo-sm.png')  }}" alt="logo-small" class="logo-sm">
                 </span>
                 <span class="">
-                    <img src="backend/assets/images/logo-light.png" alt="logo-large" class="logo-lg logo-light">
-                    <img src="backend/assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
+                    <img src="{{  asset('backend/assets/images/logo-light.png')  }}" alt="logo-large" class="logo-lg logo-light">
+                    <img src="{{  asset('backend/assets/images/logo-dark.png')  }}" alt="logo-large" class="logo-lg logo-dark">
                 </span>
             </a>
         </div>
@@ -754,13 +759,13 @@
                             <div class="collapse " id="sidebarAuthentication">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="auth-login.html">Log in</a>
+                                        <a class="nav-link" href="{{ route('login') }}">Log in</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="auth-register.html">Register</a>
+                                        <a class="nav-link" href="{{ route('register') }}">Register</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
-                                        <a class="nav-link" href="auth-recover-pw.html">Re-Password</a>
+                                        <a class="nav-link" href="">Re-Password</a>
                                     </li><!--end nav-item-->
                                     <li class="nav-item">
                                         <a class="nav-link" href="auth-lock-screen.html">Lock Screen</a>

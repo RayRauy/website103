@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use \Illuminate\Http\Request;
 
 Route::get('/', action: function () {
-    return view('index');
+    return view('home');
 }) -> name('index');
 Auth::routes();
 
