@@ -3,6 +3,7 @@
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Http\Request;
@@ -40,4 +41,12 @@ Route::post('menu-store', [MenuController::class, 'store']) -> name('menu.store'
 Route::get('menu-edit/{id}', [MenuController::class, 'edit']) -> name('menu.edit');
 Route::put('menu-update/{id}', [MenuController::class, 'update']) -> name('menu.update');
 Route::get('menu-destroy/{id}', [MenuController::class, 'destroy']) -> name('menu.delete');
+
+//Site Settings
+Route::get('sites-index', [SiteSettingController::class, 'index']) -> name('site.index');
+Route::get('sites-create', [SiteSettingController::class, 'create']) -> name('site.create');
+Route::post('sites-store', [SiteSettingController::class, 'store']) -> name('site.store');
+Route::get('sites-edit/{id}', [SiteSettingController::class, 'edit']) -> name('site.edit');
+Route::put('sites-update/{id}', [SiteSettingController::class, 'update']) -> name('site.update');
+Route::get('sites-destroy/{id}', [SiteSettingController::class, 'destroy']) -> name('site.delete');
 // Route::resource('roles', 'RoleController');
