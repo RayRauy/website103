@@ -12,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $rows = \App\Models\Post::latest()->get();
+        $rows = Post::latest()->get();
         return view('posts.index', compact('rows'));
     }
 
@@ -95,7 +95,7 @@ class PostController extends Controller
         if ($row->image && file_exists(public_path($row->image))) {
             unlink(public_path($row->image));
         }
-        
+
         // Default to existing image
         $imagePath = $row->image;
 
