@@ -4,6 +4,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Http\Request;
@@ -49,4 +51,12 @@ Route::post('sites-store', [SiteSettingController::class, 'store']) -> name('sit
 Route::get('sites-edit/{id}', [SiteSettingController::class, 'edit']) -> name('site.edit');
 Route::put('sites-update/{id}', [SiteSettingController::class, 'update']) -> name('site.update');
 Route::get('sites-destroy/{id}', [SiteSettingController::class, 'destroy']) -> name('site.delete');
+
+//Posts
+Route::get('posts-index', [PostController::class, 'index']) -> name('post.index');
+Route::get('posts-create', [PostController::class, 'create']) -> name('post.create');
+Route::post('posts-store', [PostController::class, 'store']) -> name('post.store');
+Route::get('posts-edit/{id}', [PostController::class, 'edit']) -> name('post.edit');
+Route::put('posts-update/{id}', [PostController::class, 'update']) -> name('post.update');
+Route::get('posts-destroy/{id}', [PostController::class, 'destroy']) -> name('post.delete');
 // Route::resource('roles', 'RoleController');
