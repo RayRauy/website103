@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BannerController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -59,4 +60,12 @@ Route::post('posts-store', [PostController::class, 'store']) -> name('post.store
 Route::get('posts-edit/{id}', [PostController::class, 'edit']) -> name('post.edit');
 Route::put('posts-update/{id}', [PostController::class, 'update']) -> name('post.update');
 Route::get('posts-destroy/{id}', [PostController::class, 'destroy']) -> name('post.delete');
+
+//Posts
+Route::get('banners-index', [BannerController::class, 'index']) -> name('banner.index');
+Route::get('banners-create', [BannerController::class, 'create']) -> name('banner.create');
+Route::post('banners-store', [BannerController::class, 'store']) -> name('banner.store');
+Route::get('banners-edit/{id}', [BannerController::class, 'edit']) -> name('banner.edit');
+Route::put('banners-update/{id}', [BannerController::class, 'update']) -> name('banner.update');
+Route::get('banners-destroy/{id}', [BannerController::class, 'destroy']) -> name('banner.delete');
 // Route::resource('roles', 'RoleController');
