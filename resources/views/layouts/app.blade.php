@@ -346,6 +346,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
                                     </li><!--end nav-item-->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('banner.index') }}">Banners</a>
+                                    </li><!--end nav-item-->
                                 </ul><!--end nav-->
                             </div><!--end startbarDashboards-->
                         </li><!--end nav-item-->
