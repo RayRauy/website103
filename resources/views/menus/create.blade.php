@@ -28,10 +28,12 @@
                                 <label for="description" class="form-label">Description</label>
                                 <textarea name = "description" class = "form-control" rows ="2" placeholder="Description"></textarea>
                             </div>
-                            <div class="mb-2">
-                                <label for="active" class="form-label">Active</label>
-                                <input name="active" class="form-control" type="text" rows="2" placeholder="Name">
-                                {{-- <small>Error Message</small> --}}
+                            <div class="mb-3">
+                                <label class="form-label">Status</label>
+                                <select name="active" class="form-control">
+                                    <option value="1" {{ old('active') == 1 ? 'selected' : '' }}>Active</option>
+                                    <option value="0" {{ old('active') == 0 ? 'selected' : '' }}>Inactive</option>
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form><!--end form-->            
