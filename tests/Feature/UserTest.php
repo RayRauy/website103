@@ -81,9 +81,15 @@ test('Can delete a user', function () {
     ]);
 });
 
-// test('use the testing environment', function () {
-//     dump([
-//         'app_env_helper' => app()->environment(),
-//         'env_var' => env('APP_ENV'),
-//         'env_config' => config('app.env'),]);
-// });
+test('Can query and display user data from database', function () {
+    $user = User::factory()->create([
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+    ]);
+
+    $queriedUser = User::find($user->id);
+
+    expect($queriedUser)->not->toBeNull();
+    expect($queriedUser->name)->toBe('Test User');
+    expect($queriedUser->email)->toBe('test@example.com');
+});
