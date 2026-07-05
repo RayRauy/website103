@@ -1,42 +1,49 @@
-version: '3.8'
+version: "3.8"
 # Run automatically on startup
 services:
-  app:
-    build: 
-      context: .
-      target: php
-    container_name: laravel_app
-    working_dir: /var/www
-    environment:
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: website103
-      DB_USERNAME: root
-      DB_PASSWORD: root
-    volumes:
-      - .:/var/www
-      - /var/www/vendor
-    ports:
-      - "8001:80"
-    depends_on:
-      db:
-        condition: service_healthy
-  db:
-    image: mysql:8
-    container_name: mysql_db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: website103
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
-      interval: 5s
-      timeout: 5s
-      retries: 20
+    app:
+        build:
+            context: .
+            target: php
+        container_name: laravel_app
+        working_dir: /var/www
+        environment:
+            DB_CONNECTION: mysql
+            DB_HOST: db
+            DB_PORT: 3306
+            DB_DATABASE: website103
+            DB_USERNAME: root
+            DB_PASSWORD: root
+        volumes:
+            - .:/var/www
+            - /var/www/vendor
+        ports:
+            - "8001:80"
+        depends_on:
+            db:
+                condition: service_healthy
+    db:
+        image: mysql:8
+        container_name: mysql_db
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: website103
+        volumes:
+            - db_data:/var/lib/mysql
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "mysqladmin",
+                    "ping",
+                    "-h",
+                    "localhost",
+                    "-uroot",
+                    "-proot",
+                ]
+            interval: 5s
+            timeout: 5s
+            retries: 20
 volumes:
-  db_data: ~
-  # app_data: ~
+    db_data: ~
+    # app_data: ~
