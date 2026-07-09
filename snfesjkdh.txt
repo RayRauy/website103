@@ -1,0 +1,35 @@
+vlan 10
+name IT
+vlan 20
+name HR
+vlan 30
+name Student
+
+int ran g0/1-2
+swit mod trunk
+swit trunk allowed vlan 1,10,20,30
+no sh
+
+int ran f0/1-4
+swit mod acc
+swit acc vlan 10
+swit port-security
+swit port-security max 2
+swit port-security violation restrict
+swit port-security mac-address sticky
+
+int ran f0/5-8
+swit mod acc
+swit acc vlan 20
+swit port-security
+swit port-security max 2
+swit port-security violation restrict
+swit port-security mac-address sticky
+
+int ran f0/9-12
+swit mod acc
+swit acc vlan 30
+swit port-security
+swit port-security max 2
+swit port-security violation restrict
+swit port-security mac-address sticky
