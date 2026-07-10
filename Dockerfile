@@ -17,6 +17,7 @@ WORKDIR /var/www
 COPY --chown=www-data . .
 
 COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
+COPY docker/php/zz-disable-access-log.conf /usr/local/etc/php-fpm.d/zz-disable-access-log.conf
 COPY ./docker/php/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
 COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/entrypoint.sh /entrypoint.sh
