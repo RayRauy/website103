@@ -88,4 +88,4 @@ Route::get('/debug-ip', function () {
         'remote' => request()->server('REMOTE_ADDR'),
         'headers' => request()->headers->all(),
     ];
-});
+})->middleware('auth');
