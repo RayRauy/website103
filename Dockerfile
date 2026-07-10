@@ -10,7 +10,8 @@ RUN usermod -u 1000 www-data
 RUN apt-get update
 RUN apt-get install -y unzip libicu-dev libpq-dev libcurl4-gnutls-dev nginx pkg-config curl git
 RUN docker-php-ext-install pdo pdo_mysql bcmath opcache intl
-
+RUN ln -snf /usr/share/zoneinfo/Asia/Phnom_Penh /etc/localtime && \
+    echo "Asia/Phnom_Penh" > /etc/timezone
 # COPY . /var/www
 WORKDIR /var/www
 
